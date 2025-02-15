@@ -1,21 +1,324 @@
-/* Basic styles for the whole website */
+/* General Styling */
 body {
-    font-family: 'Inter', Arial, sans-serif;
+    font-family: 'Inter', sans-serif;
     margin: 0;
     padding: 0;
-    background: #0a0a0a;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
     color: #ffffff;
+    line-height: 1.6;
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
 }
 
-/* Header styles */
 header {
     background: linear-gradient(to right, #2d1b4d, #4a1b9a);
     color: white;
-    padding: 20px;
     text-align: center;
+    padding: 40px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(138, 43, 226, 0.2) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin: 0;
+    position: relative;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+footer {
+    background: linear-gradient(to right, #2d1b4d, #4a1b9a);
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 40px;
+    position: relative;
+}
+
+a {
+    color: #b388ff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: #7c4dff;
+    text-decoration: none;
+}
+
+/* Grid Layout */
+.grid-container {
+    display: grid;
+    grid-template-areas:
+        "bio bio"
+        "projects projects"
+        "contact contact";
+    gap: 30px;
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.bio {
+    grid-area: bio;
+    background: linear-gradient(145deg, #121212, #1a1a1a);
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(138, 43, 226, 0.15);
+    border: 1px solid rgba(138, 43, 226, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.bio img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    display: block;
+    margin: 30px auto;
+    border: 4px solid transparent;
+    background: linear-gradient(145deg, #4a1b9a, #8a2be2) border-box;
+    box-shadow: 0 8px 24px rgba(138, 43, 226, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bio img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 32px rgba(138, 43, 226, 0.3);
+}
+
+.bio ul {
+    margin-left: 20px;
+    margin-top: 15px;
+    color: #e0e0e0;
+}
+
+.bio h2, .projects h2, .contact h2 {
+    color: #b388ff;
+    font-weight: 600;
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+.bio h2::after, .projects h2::after, .contact h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(to right, #4a1b9a, transparent);
+    border-radius: 2px;
+}
+
+.bio h3 {
+    color: #9c27b0;
+    font-weight: 500;
+    font-size: 1.5rem;
+    margin-top: 2rem;
+}
+
+.projects {
+    grid-area: projects;
+    background: linear-gradient(145deg, #121212, #1a1a1a);
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(138, 43, 226, 0.15);
+    border: 1px solid rgba(138, 43, 226, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.project {
+    margin-bottom: 40px;
+    padding: 25px;
+    border-radius: 12px;
+    background: linear-gradient(145deg, #1a1a1a, #222222);
+    box-shadow: 0 4px 16px rgba(138, 43, 226, 0.1);
+    border-left: 4px solid #4a1b9a;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.project::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(138, 43, 226, 0.03));
+    pointer-events: none;
+}
+
+.project h3 {
+    color: #b388ff;
+    margin-bottom: 15px;
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.project h4 {
+    color: #9c27b0;
+    margin: 20px 0 10px;
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+
+.project p {
+    color: #e0e0e0;
+    line-height: 1.8;
+}
+
+.project img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 20px 0;
+    border: 1px solid rgba(138, 43, 226, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.project img:hover {
+    transform: scale(1.02);
+}
+
+.project ul {
+    margin-left: 20px;
+    margin-bottom: 20px;
+    color: #e0e0e0;
+}
+
+.project li {
+    margin-bottom: 8px;
+    position: relative;
+    padding-left: 5px;
+}
+
+.project a {
+    display: inline-block;
+    padding: 10px 20px;
+    background: linear-gradient(45deg, #4a1b9a, #8a2be2);
+    color: white;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    position: relative;
+    overflow: hidden;
+}
+
+.project a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: 0.5s;
+}
+
+.project a:hover::before {
+    left: 100%;
+}
+
+.project a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(138, 43, 226, 0.3);
+}
+
+.project:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(138, 43, 226, 0.2);
+    border-left: 4px solid #8a2be2;
+}
+
+.contact {
+    grid-area: contact;
+    background: linear-gradient(145deg, #121212, #1a1a1a);
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(138, 43, 226, 0.15);
+    border: 1px solid rgba(138, 43, 226, 0.1);
+    text-align: center;
+    backdrop-filter: blur(10px);
+}
+
+.contact p {
+    color: #e0e0e0;
+    margin: 15px 0;
+    font-size: 1.1rem;
+}
+
+.contact a {
+    font-weight: 500;
+    position: relative;
+    padding-bottom: 2px;
+}
+
+.contact a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background: linear-gradient(to right, #4a1b9a, #8a2be2);
+    transition: width 0.3s ease;
+}
+
+.contact a:hover::after {
+    width: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-areas:
+            "bio"
+            "projects"
+            "contact";
+        padding: 20px 15px;
+        gap: 20px;
+    }
+    
+    header {
+        padding: 30px 0;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .bio, .projects, .contact {
+        padding: 20px;
+    }
+
+    .bio img {
+        max-width: 150px;
+        margin: 20px auto;
+    }
+
+    .project {
+        padding: 20px;
+        margin-bottom: 30px;
+    }
+
+    .bio h2, .projects h2, .contact h2 {
+        font-size: 1.75rem;
+    }
 }
 
 /* Navigation styles */
@@ -28,11 +331,12 @@ nav a {
     text-decoration: none;
     padding: 5px 10px;
     margin: 0 5px;
+    transition: all 0.3s ease;
 }
 
 nav a:hover {
-    background-color: white;
-    color: #9c27b0;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #b388ff;
     border-radius: 5px;
 }
 
@@ -91,18 +395,6 @@ ul {
 
 .project a:hover {
     transform: scale(1.05);
-}
-
-/* Footer styles */
-footer {
-    background: linear-gradient(to right, #2d1b4d, #4a1b9a);
-    color: white;
-    text-align: center;
-    padding: 10px;
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-    left: 0;
 }
 
 /* Games section styles */
